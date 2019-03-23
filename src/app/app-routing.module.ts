@@ -11,10 +11,8 @@ const routes: Routes = [
     path: 'home',
     loadChildren: './home/home.module#HomePageModule'
   },
-  {
-    path: 'list',
-    loadChildren: './list/list.module#ListPageModule'
-  }
+  { path: 'movies', loadChildren: './pages/movies/movies.module#MoviesPageModule' },
+  { path: 'movies-details', loadChildren: './pages/movies-details/movies-details.module#MoviesDetailsPageModule' },
 ];
 
 @NgModule({
