@@ -8,6 +8,8 @@ import { MoviedbService } from 'src/app/services/moviedb.service';
 })
 export class MoviesPage implements OnInit {
 
+  movies = [];
+
   constructor(private mDBService: MoviedbService) { }
 
   //MÉTODO É EXECUTADO QUANDO SE ENTRA NA PÁGINA
@@ -22,7 +24,9 @@ export class MoviesPage implements OnInit {
         let resposta = (data as any)._body;
         //converte para obj JSON
         resposta = JSON.parse(resposta);
-        console.log(resposta);
+        //atribui a resposta do array de filmes
+        this.movies = resposta;
+        // TESTA console.log(resposta);
       },
       error=>{
         console.log(error);

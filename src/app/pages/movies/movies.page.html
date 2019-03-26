@@ -8,14 +8,14 @@
 </ion-header>
 
 <ion-content>
-    <ion-card class="welcome-card">
-        <ion-img src="https://img.elo7.com.br/product/zoom/1E0EB0A/poster-cartaz-narcos-netflix-poster-tematico.jpg"></ion-img>
+    <ion-card class="welcome-card" *ngFor="let movie of movies.results">
+        <ion-img src="https://image.tmdb.org/t/p/w500/{{movie.backdrop_path}}"></ion-img>
         <ion-card-header>
-          <ion-card-subtitle>Exclusivo</ion-card-subtitle>
-          <ion-card-title>Narcos</ion-card-title>
+          <ion-card-subtitle>Popularidade: {{movie.popularity}}</ion-card-subtitle>
+          <ion-card-title class="text-center">{{movie.title}}</ion-card-title>
         </ion-card-header>
         <ion-card-content>
-          <p>Narcos é a história real dos esforços dos Estados Unidos e Colômbia para combater o temido traficante Pablo Escobar (interpretado pelo ator Wagner Moura, de Tropa de Elite) e o cartel de Medellín, uma das organizações criminosas mais ricas e impiedosas da história.</p>
+          <p>{{movie.overview}}</p>
         </ion-card-content>
       </ion-card>
 </ion-content>
