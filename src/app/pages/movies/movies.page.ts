@@ -11,7 +11,7 @@ export class MoviesPage implements OnInit {
 
   movies = [];
   
-  private param:string = "top_rated";
+  private param:string = "popular";
 
   constructor(private mDBService: MoviedbService, private LoadingController: LoadingController) { }
 
@@ -46,6 +46,10 @@ export class MoviesPage implements OnInit {
         loading.dismiss();
       }
     ).add();    
+    }
+
+    exibeMsg(id:string) {
+      console.log(`O id do filme clicado é: ${id}`);
     }
 
 }

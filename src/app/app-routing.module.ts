@@ -12,9 +12,8 @@ const routes: Routes = [
     loadChildren: './home/home.module#HomePageModule'
   },
   { path: 'movies', loadChildren: './pages/movies/movies.module#MoviesPageModule' },
-  { path: 'movies-details', loadChildren: './pages/movies-details/movies-details.module#MoviesDetailsPageModule' },
+  { path: 'details/:id', loadChildren: './pages/movies-details/movies-details.module#MoviesDetailsPageModule' },
 ];
-
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
