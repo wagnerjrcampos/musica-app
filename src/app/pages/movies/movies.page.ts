@@ -21,7 +21,7 @@ export class MoviesPage implements OnInit {
 
   async consultaMovies(index?){
     //verifica se o parametro index está setado, senão ele um valor random
-    index = (typeof index === 'undifined') ? 3 : Math.floor(Math.random() * 4);
+    index = (typeof index === 'undefined') ? 3 : Math.floor(Math.random() * 4);
     let param = (typeof this.movie_name === 'undefined') ? `movie/${this.arrayCategory[index]}?`: `search/movie?query=${this.movie_name}&include_adult=false&`; 
     //loading..
     const loading = await this.LoadingController.create({
