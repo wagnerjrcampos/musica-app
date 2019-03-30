@@ -40,5 +40,8 @@ export class MoviesDetailsPage implements OnInit {
       }
     ).add();    
     }
+    exibeMsg(id:string){
+      console.log(`O id do filme clicado é: ${id}`);
+    }
 
 }

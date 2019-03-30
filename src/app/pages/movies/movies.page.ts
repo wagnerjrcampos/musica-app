@@ -10,19 +10,20 @@ import { LoadingController } from '@ionic/angular';
 export class MoviesPage implements OnInit {
 
   movies = [];
-  
-  private param:string = "popular";
+  private arrayCategory=  ["popular", "top_rated", "become", "upcoming"];
+  private movie_name:string;
 
   constructor(private mDBService: MoviedbService, private LoadingController: LoadingController) { }
-
   //MÉTODO É EXECUTADO QUANDO SE ENTRA NA PÁGINA
   ngOnInit() {
     this.consultaMovies()
   }
 
-  async consultaMovies(){
+  async consultaMovies(index?){
+    //verifica se o parametro index está setado, senão ele um valor random
+    index = (typeof index === 'undifined') ? 3 : Math.floor(Math.random() * 4);
+    let param = (typeof this.movie_name === 'undefined') ? `movie/${this.arrayCategory[index]}?`: `search/movie?query=${this.movie_name}&include_adult=false&`; 
     //loading..
-
     const loading = await this.LoadingController.create({
       message: 'Carreagando filmes...'
     });
@@ -30,10 +31,10 @@ export class MoviesPage implements OnInit {
     await loading.present();
 
 
-    await this.mDBService.getMovies(this.param).subscribe(
+    await this.mDBService.getMovies(param).subscribe(
       data=>{
         //page a resposta
-        let resposta = (data as any)._body;
+        //let resposta = (data as any)._body;
         //converte para obj JSON
         //resposta = JSON.parse(resposta);
         //atribui a resposta do array de filmes
@@ -47,9 +48,10 @@ export class MoviesPage implements OnInit {
       }
     ).add();    
     }
-
-    exibeMsg(id:string) {
-      console.log(`O id do filme clicado é: ${id}`);
+    doRefresh(event) {
+      this.consultaMovies('Caiu');
+      setTimeout(() => {
+        event.target.complete();
+      }, 2000);
     }
-
 }
